@@ -4,10 +4,16 @@
   "displayName": "ASON Support",
   "description": "Language support for ASON (Array-Schema Object Notation) format — syntax highlighting, formatting, compression, error diagnostics, and field hints",
   "version": "0.1.0",
+  "license": "MIT",
   "publisher": "ason",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ason-lab/ason-go"
+    "url": "https://github.com/ason-lab/plugin_vscode.git",
+    "directory": "plugin_vscode"
+  },
+  "homepage": "https://github.com/ason-lab/plugin_vscode#readme",
+  "bugs": {
+    "url": "https://github.com/ason-lab/plugin_vscode/issues"
   },
   "engines": {
     "vscode": "^1.75.0"
@@ -19,6 +25,13 @@
     "Programming Languages",
     "Formatters",
     "Linters"
+  ],
+  "keywords": [
+    "ason",
+    "schema",
+    "serialization",
+    "formatter",
+    "language-server"
   ],
   "main": "./out/extension.js",
   "contributes": {
