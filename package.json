@@ -5,7 +5,7 @@
   "description": "Language support for ASON (Array-Schema Object Notation) format — syntax highlighting, formatting, compression, error diagnostics, and field hints",
   "version": "0.1.0",
   "license": "MIT",
-  "publisher": "ason",
+  "publisher": "Athan",
   "repository": {
     "type": "git",
     "url": "https://github.com/ason-lab/plugin_vscode.git",
