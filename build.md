@@ -164,7 +164,7 @@ The legacy `ason-lsp` fallback is kept for compatibility, but `lsp-ason` is the 
 2. Paste the following content:
 
 ```ason
-{name:str, age:int, active:bool}:
+{name@str, age@int, active@bool}:
   (Alice, 30, true)
 ```
 
@@ -187,7 +187,7 @@ Syntax highlighting works automatically for `.ason` files.
 Highlighted elements include:
 
 - field names
-- type annotations such as `:str`, `:int`, `:bool`, `:float`
+- type annotations such as `@str`, `@int`, `@bool`, `@float`
 - string, number, and boolean values
 - `{}` `()` `[]`
 - comments like `/* ... */`
@@ -198,7 +198,7 @@ Fenced ASON code blocks are highlighted in Markdown:
 
 ````markdown
 ```ason
-{name:str, score:int}:(Alice, 100)
+{name@str, score@int}:(Alice, 100)
 ```
 ````
 
@@ -209,7 +209,7 @@ The extension shows real-time diagnostics while you edit.
 For example, this input is invalid:
 
 ```ason
-{name:str}:(Alice
+{name@str}:(Alice
 ```
 
 VS Code should underline the error and show it in the Problems panel.
@@ -227,13 +227,13 @@ Ways to run it:
 Before:
 
 ```ason
-{name:str,age:int,addr:{city:str,zip:int}}:(Alice,30,(NYC,10001))
+{name@str,age@int,addr@{city@str,zip@int}}:(Alice,30,(NYC,10001))
 ```
 
 After:
 
 ```ason
-{name:str, age:int, addr:{city:str, zip:int}}:
+{name@str, age@int, addr@{city@str, zip@int}}:
   (Alice, 30, (NYC, 10001))
 ```
 
@@ -246,14 +246,14 @@ Use the Command Palette and run `ASON: Compress (Minify)`.
 Before:
 
 ```ason
-{name:str, age:int}:
+{name@str, age@int}:
   (Alice, 30)
 ```
 
 After:
 
 ```ason
-{name:str,age:int}:(Alice,30)
+{name@str,age@int}:(Alice,30)
 ```
 
 ### 5.6 Convert ASON to JSON
@@ -263,7 +263,7 @@ Open an `.ason` file, run `ASON: Convert to JSON`, and the extension opens the c
 ASON input:
 
 ```ason
-{name:str, age:int, active:bool}:
+{name@str, age@int, active@bool}:
   (Alice, 30, true)
 ```
 
@@ -305,7 +305,7 @@ JSON input:
 ASON output:
 
 ```ason
-[{name:str,score:int}]:
+[{name@str,score@int}]:
   (Alice,95),
   (Bob,87)
 ```
@@ -331,13 +331,13 @@ The extension can show field-name hints before tuple values.
 Example source:
 
 ```ason
-{name:str, age:int, city:str}:(Alice, 30, NYC)
+{name@str, age@int, city@str}:(Alice, 30, NYC)
 ```
 
 Displayed with hints:
 
 ```text
-{name:str, age:int, city:str}:(name: Alice, age: 30, city: NYC)
+{name@str, age@int, city@str}:(name: Alice, age: 30, city: NYC)
 ```
 
 The `name:`, `age:`, and `city:` labels are visual hints only. They are not part of the file content.
@@ -349,7 +349,7 @@ The extension provides semantic highlighting for different token categories:
 | Element | Semantic Type |
 | --- | --- |
 | `{}` `()` `[]` | keyword |
-| `:int`, `:str`, etc. | type |
+| `@int`, `@str`, etc. | type |
 | field names | variable |
 | string values | string |
 | numbers | number |

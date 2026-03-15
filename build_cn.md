@@ -163,7 +163,7 @@ code ../plugin_vscode
 2. 输入以下内容：
 
 ```ason
-{name:str, age:int, active:bool}:
+{name@str, age@int, active@bool}:
   (Alice, 30, true)
 ```
 
@@ -186,7 +186,7 @@ code ../plugin_vscode
 高亮范围包括：
 
 - 字段名
-- 类型标注，例如 `:str`、`:int`、`:bool`、`:float`
+- 类型标注，例如 `@str`、`@int`、`@bool`、`@float`
 - 字符串、数字和布尔值
 - `{}` `()` `[]`
 - `/* ... */` 形式的注释
@@ -197,7 +197,7 @@ Markdown 里的 ASON 围栏代码块也会高亮：
 
 ````markdown
 ```ason
-{name:str, score:int}:(Alice, 100)
+{name@str, score@int}:(Alice, 100)
 ```
 ````
 
@@ -208,7 +208,7 @@ Markdown 里的 ASON 围栏代码块也会高亮：
 例如下面的输入是无效的：
 
 ```ason
-{name:str}:(Alice
+{name@str}:(Alice
 ```
 
 VS Code 会在编辑器里标出错误，并在“问题”面板中显示对应信息。
@@ -226,13 +226,13 @@ VS Code 会在编辑器里标出错误，并在“问题”面板中显示对应
 格式化前：
 
 ```ason
-{name:str,age:int,addr:{city:str,zip:int}}:(Alice,30,(NYC,10001))
+{name@str,age@int,addr@{city@str,zip@int}}:(Alice,30,(NYC,10001))
 ```
 
 格式化后：
 
 ```ason
-{name:str, age:int, addr:{city:str, zip:int}}:
+{name@str, age@int, addr@{city@str, zip@int}}:
   (Alice, 30, (NYC, 10001))
 ```
 
@@ -245,14 +245,14 @@ VS Code 会在编辑器里标出错误，并在“问题”面板中显示对应
 压缩前：
 
 ```ason
-{name:str, age:int}:
+{name@str, age@int}:
   (Alice, 30)
 ```
 
 压缩后：
 
 ```ason
-{name:str,age:int}:(Alice,30)
+{name@str,age@int}:(Alice,30)
 ```
 
 ### 5.6 ASON 转 JSON
@@ -262,7 +262,7 @@ VS Code 会在编辑器里标出错误，并在“问题”面板中显示对应
 ASON 输入：
 
 ```ason
-{name:str, age:int, active:bool}:
+{name@str, age@int, active@bool}:
   (Alice, 30, true)
 ```
 
@@ -304,7 +304,7 @@ JSON 输入：
 ASON 输出：
 
 ```ason
-[{name:str,score:int}]:
+[{name@str,score@int}]:
   (Alice,95),
   (Bob,87)
 ```
@@ -330,13 +330,13 @@ ASON 输出：
 例如源码：
 
 ```ason
-{name:str, age:int, city:str}:(Alice, 30, NYC)
+{name@str, age@int, city@str}:(Alice, 30, NYC)
 ```
 
 编辑器里会显示成类似这样：
 
 ```text
-{name:str, age:int, city:str}:(name: Alice, age: 30, city: NYC)
+{name@str, age@int, city@str}:(name: Alice, age: 30, city: NYC)
 ```
 
 其中 `name:`、`age:`、`city:` 只是视觉提示，不会写入文件内容。
@@ -348,7 +348,7 @@ ASON 输出：
 | 元素 | 语义类型 |
 | --- | --- |
 | `{}` `()` `[]` | keyword |
-| `:int`、`:str` 等 | type |
+| `@int`、`@str` 等 | type |
 | 字段名 | variable |
 | 字符串值 | string |
 | 数字 | number |

@@ -71,7 +71,7 @@ build_lsp() {
 
     (
         cd "$LSP_DIR"
-        zig build -Dtarget="${zig_target}" --release=safe -p "$prefix"
+        zig build -Dtarget="${zig_target}" --release=small -p "$prefix"
     )
 
     cp "$prefix/bin/lsp-ason${suffix}" "$output"

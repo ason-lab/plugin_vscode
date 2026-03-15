@@ -62,17 +62,15 @@
         i = j + 1;
         continue;
       }
-      // Type hints :int :str :bool :float etc
+      // Schema/body separator
       if (src[i] === ":") {
-        var m = src
-          .slice(i)
-          .match(/^:(int|integer|float|double|str|string|bool|boolean)\b/);
-        if (m) {
-          result += sp("op", ":") + sp("typ", m[1]);
-          i += m[0].length;
-          continue;
-        }
         result += sp("op", ":");
+        i++;
+        continue;
+      }
+      // Type and structural marker
+      if (src[i] === "@") {
+        result += sp("at", "@");
         i++;
         continue;
       }
@@ -90,13 +88,19 @@
       }
       // Identifiers / keywords
       if (/[a-zA-Z_]/.test(src[i])) {
-        var wm = src.slice(i).match(/^[a-zA-Z_][a-zA-Z0-9_]*/);
+        var wm = src.slice(i).match(/^[a-zA-Z_][a-zA-Z0-9_+\-]*/);
         if (wm) {
           var word = wm[0];
+          var prev = i - 1;
+          while (prev >= 0 && /\s/.test(src[prev])) prev--;
           if (word === "true" || word === "false") {
             result += sp("bool", word);
-          } else if (word === "map") {
-            result += sp("kw", word);
+          } else if (
+            prev >= 0 &&
+            src[prev] === "@" &&
+            /^(int|integer|float|double|str|string|bool|boolean)$/.test(word)
+          ) {
+            result += sp("typ", word);
           } else {
             result += sp("var", esc(word));
           }
@@ -140,7 +144,7 @@
     ".ason-typ  { color: #4ec9b0; }",
     ".ason-num  { color: #b5cea8; }",
     ".ason-bool { color: #569cd6; }",
-    ".ason-kw   { color: #c586c0; }",
+    ".ason-at   { color: #d4d4d4; }",
     ".ason-bkt  { color: #ffd700; }",
     ".ason-op   { color: #d4d4d4; }",
     ".ason-var  { color: #9cdcfe; }",
@@ -150,7 +154,7 @@
     "body.vscode-light .ason-typ  { color: #267f99; }",
     "body.vscode-light .ason-num  { color: #098658; }",
     "body.vscode-light .ason-bool { color: #0000ff; }",
-    "body.vscode-light .ason-kw   { color: #af00db; }",
+    "body.vscode-light .ason-at   { color: #000000; }",
     "body.vscode-light .ason-bkt  { color: #0431fa; }",
     "body.vscode-light .ason-op   { color: #000000; }",
     "body.vscode-light .ason-var  { color: #001080; }",
@@ -160,7 +164,7 @@
     "body.vscode-high-contrast .ason-typ  { color: #4ec9b0; }",
     "body.vscode-high-contrast .ason-num  { color: #b5cea8; }",
     "body.vscode-high-contrast .ason-bool { color: #569cd6; }",
-    "body.vscode-high-contrast .ason-kw   { color: #c586c0; }",
+    "body.vscode-high-contrast .ason-at   { color: #d4d4d4; }",
     "body.vscode-high-contrast .ason-bkt  { color: #ffd700; }",
     "body.vscode-high-contrast .ason-op   { color: #d4d4d4; }",
     "body.vscode-high-contrast .ason-var  { color: #9cdcfe; }",

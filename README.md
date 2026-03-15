@@ -18,7 +18,7 @@ ASON is useful when you want more structure than plain JSON, without giving up r
 Example:
 
 ```ason
-[{name:str, age:int, active:bool}]:
+[{name@str, age@int, active@bool}]:
   (Alice, 30, true),
   (Bob, 24, false)
 ```
@@ -81,13 +81,13 @@ Turn dense ASON into a clean, aligned structure.
 Before:
 
 ```ason
-{name:str,age:int,addr:{city:str,zip:int}}:(Alice,30,(NYC,10001))
+{name@str,age@int,addr@{city@str,zip@int}}:(Alice,30,(NYC,10001))
 ```
 
 After:
 
 ```ason
-{name:str, age:int, addr:{city:str, zip:int}}:
+{name@str, age@int, addr@{city@str, zip@int}}:
   (Alice, 30, (NYC, 10001))
 ```
 
@@ -96,7 +96,7 @@ After:
 Convert formatted content back into a compact single-line representation.
 
 ```ason
-{name:str,age:int}:(Alice,30)
+{name@str,age@int}:(Alice,30)
 ```
 
 ### Convert between ASON and JSON
@@ -106,7 +106,7 @@ Use ASON where schema-aware editing is helpful, then export JSON when another sy
 ASON:
 
 ```ason
-{name:str, age:int, active:bool}:
+{name@str, age@int, active@bool}:
   (Alice, 30, true)
 ```
 
@@ -127,13 +127,13 @@ For tuple-style records, the extension can display field-name hints inline so va
 Source:
 
 ```ason
-{name:str, age:int, city:str}:(Alice, 30, NYC)
+{name@str, age@int, city@str}:(Alice, 30, NYC)
 ```
 
 Displayed in the editor:
 
 ```text
-{name:str, age:int, city:str}:(name: Alice, age: 30, city: NYC)
+{name@str, age@int, city@str}:(name: Alice, age: 30, city: NYC)
 ```
 
 ## Commands
@@ -174,9 +174,9 @@ If syntax highlighting works but diagnostics or formatting do not, the ASON lang
 
 Marketplace-facing documentation is intentionally kept separate from build instructions.
 
-- Developer build guide: [build.md](./build.md)
-- Chinese build guide: [build_cn.md](./build_cn.md)
+- [Developer build guide](./build.md)
+- [Chinese build guide](./build_cn.md)
 
 ## Repository
 
-Source code: <https://github.com/ason-lab/ason>
+[Source code](https://github.com/ason-lab/ason)

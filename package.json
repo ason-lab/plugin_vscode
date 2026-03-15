@@ -116,7 +116,7 @@
         "ason.lspPath": {
           "type": "string",
           "default": "",
-          "description": "Path to the ason-lsp binary. If empty, uses bundled or PATH."
+          "description": "Path to the lsp-ason binary. If empty, uses bundled or PATH."
         },
         "ason.inlayHints.enabled": {
           "type": "boolean",

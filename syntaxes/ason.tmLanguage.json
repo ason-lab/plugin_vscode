@@ -35,23 +35,18 @@
             { "include": "#schema" },
             { "include": "#type-hint" },
             { "include": "#field-name" },
-            { "include": "#operators" },
-            { "include": "#map-keyword" }
+            { "include": "#operators" }
           ]
         }
       ]
     },
     "field-name": {
       "name": "variable.other.field.ason",
-      "match": "[a-zA-Z_][a-zA-Z0-9_+\\-]*(?=\\s*[,:}])"
+      "match": "[a-zA-Z_][a-zA-Z0-9_+\\-]*(?=\\s*[@,}])"
     },
     "type-hint": {
       "name": "support.type.ason",
       "match": "\\b(int|integer|float|double|str|string|bool|boolean)\\b"
-    },
-    "map-keyword": {
-      "name": "keyword.other.map.ason",
-      "match": "\\bmap\\b"
     },
     "data": {
       "patterns": [
@@ -131,6 +126,10 @@
     },
     "operators": {
       "patterns": [
+        {
+          "name": "punctuation.separator.at.ason",
+          "match": "@"
+        },
         {
           "name": "punctuation.separator.colon.ason",
           "match": ":"
